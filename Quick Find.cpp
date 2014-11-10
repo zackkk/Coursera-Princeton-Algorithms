@@ -19,6 +19,8 @@
 
 // Union: O(n)
 // Find: O(1)
+
+// p and q are connected if they have the same id
 // union(p, q) -> if arr[i] = p  =>  arr[i] = q;
 
 #include<iostream>
@@ -34,13 +36,14 @@ public:
 	}
 
 	void myunion(int p, int q){
-		int tmp = v[p]; // where bug happened
+		int pid = v[p]; // where bug happened
 		for(int i = 0; i < v.size(); i++){
-			if(v[i] == tmp)
+			if(v[i] == pid)
 				v[i] = v[q];
 		}
 	}
 
+	// p and q are connected if they have the same id
 	bool connected(int p, int q){
 		return v[p] == v[q];
 	}
@@ -51,6 +54,7 @@ public:
 	}
 };
 
+/*
 int main(){
 	quickFind q (10); 
 	q.myunion(4, 3); q.printV();
@@ -67,3 +71,4 @@ int main(){
 	cout << q.connected(0, 7) << endl;
 	return 0;
 }
+*/
