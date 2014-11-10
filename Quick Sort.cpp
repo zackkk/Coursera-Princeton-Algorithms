@@ -10,10 +10,11 @@ using namespace std;
 class quickSort{
 public:
 	void quicksort(vector<int> &arr, int lo, int hi){
-		if(lo > hi) return;
-		int j = partition(arr, lo, hi);
-		quicksort(arr, lo, j-1);
-		quicksort(arr, j+1, hi);
+		if(lo < hi){
+			int j = partition(arr, lo, hi);
+			quicksort(arr, lo, j-1);
+			quicksort(arr, j+1, hi);
+		}
 	}
 
 	int partition(vector<int> &arr, int lo, int hi){
@@ -24,7 +25,7 @@ public:
 			while(arr[--j] > arr[lo]) 
 				if(j == lo) break;
 			
-			if(i >= j) break;
+			if(j <= i) break;
 			swap(arr, i, j);
 		}
 		swap(arr, lo, j);
